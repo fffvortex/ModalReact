@@ -1,10 +1,12 @@
 import { useState } from "react";
 import Button from "./Button/Button";
-import Modal from "./Modal";
-import leo from "./assets/leo.gif";
+import Modal from "./Modal/Modal";
+import Modal2 from "./Modal2/Modal2";
+import Modal3 from "./Modal3/Modal3";
 
 function App() {
   const [modalActive, setModalActive] = useState();
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       <div className="wave"></div>
@@ -23,15 +25,27 @@ function App() {
       <div
         style={{
           display: "flex",
-          justifyContent: "center",
+          justifyContent: "space-around",
           alignItems: "center",
         }}
       >
-        <Button onClick={() => setModalActive(true)}>😀 (open) 😀</Button>
+        <Button onClick={() => setModalActive(true)}>open modal 😀</Button>
+        <Button onClick={() => setIsOpen(!isOpen)}>open modal2 😀</Button>
       </div>
       <Modal active={modalActive} setActive={setModalActive}>
-        <img style={{ borderRadius: "20px" }} src={leo} alt="" />
+        <img
+          style={{ borderRadius: "20px" , minHeight:"20rem"}}
+          src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExN3owZzQ1YW9odWZqNDI1ajZrbzJvOXNkYTJ3eWxlZGx6cWRlYTlpdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l41lVsYDBC0UVQJCE/giphy.webp"
+          alt=""
+        />
       </Modal>
+      <Modal2 isOpen={isOpen}>
+        <img onClick={() => setIsOpen(false)} style={{maxHeight:"20px", cursor:"pointer"}} src="https://media0.giphy.com/media/xT9Igpm06uM5OJ5lVS/giphy.gif?cid=82a1493brejdjhy19igig5junxzherw05h7zr2oyxfei1x1n&ep=v1_gifs_search&rid=giphy.gif&ct=s"/>
+        <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHBseTA2Y3R5YmhuaTF4Y3h3NnozZTVtYTlnNXlreXg4ams1Mnp1bSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l41lQpaXZo7GGWD0k/giphy.webp" alt="" />
+      </Modal2>
+
+      <Modal3 />
+
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
         perferendis quo eligendi soluta adipisci unde nesciunt optio inventore
